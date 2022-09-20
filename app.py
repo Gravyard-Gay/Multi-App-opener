@@ -38,30 +38,32 @@ def loadApps():
     for app in apps:
         os.startfile(app)  
 
-canvas = tk.Canvas(root, height=700, width=700, bg=bgCol)
+root.config(bg=bgCol, height=720)
+
+canvas = tk.Canvas(root, height=710, width=700, bg=bgCol)
 canvas.pack()
 
 frame = ctk.CTkFrame(root, bg_color=bgCol, fg_color=frameCol, corner_radius=50)
 frame.place(relheight=0.8, relwidth=0.8, relx=0.1, rely=0.1)
 
 
-btnSection = ctk.CTkFrame(frame, height=60, width=500, fg_color=frameCol)
+btnSection = ctk.CTkFrame(root, height=60, width=500, fg_color=bgCol)
 btnSection.pack()
 
 # [Buttons]
 uploadFile = ctk.CTkButton(master=btnSection, text="Upload a File", corner_radius=10, fg_color="#608",
-                           hover_color="#20f", width=btnWidth, height=60, command=addApp)
+                           hover_color="#20f", width=btnWidth, height=60, command=addApp, text_font=("sans-serif", 12))
 uploadFile.grid(column=0, row=0)
 
-gap = tk.Label(btnSection, text="", width=5, bg=frameCol).grid(column=5, row=0)
+gap = tk.Label(btnSection, text="", width=5, bg=bgCol).grid(column=5, row=0)
 
 
 openFile = ctk.CTkButton(master=btnSection, text="Load Files", corner_radius=10, fg_color="#608",
-                         hover_color="#20f", width=btnWidth, height=60, command=loadApps)
+                         hover_color="#20f", width=btnWidth, height=60, command=loadApps, text_font=("sans-serif", 12))
 openFile.grid(column=10, row=0)
 
 for app in apps:
-    label = ctk.CTkLabel(frame, text=app, fg_color="#fff", text_color=frameCol, text_font=("sans-serif", 12), pady=20, corner_radius=20)
+    label = ctk.CTkLabel(frame, text=app, fg_color="#fff", text_color=frameCol, pady=20, corner_radius=20)
     label.pack()
 
 
