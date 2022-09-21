@@ -3,8 +3,8 @@ from tkinter import filedialog, Text
 import os
 import customtkinter as ctk
 
-
-root = tk.Tk() # [Main Window]
+#Variables
+root = tk.Tk() # [ Main Window ]
 root.title("Multi App loader")
 apps = []
 btnWidth = 200
@@ -17,7 +17,7 @@ if os.path.isfile('save.txt'):
         tempApps = tempApps.split(',')
         apps = [x for x in tempApps if x.strip()]
 
-def addApp():
+def addApp():# [ Add a new app to the list ] #
     
     for widget in frame.winfo_children():
         widget.destroy()
@@ -32,17 +32,20 @@ def addApp():
     return filename
 
 
-def loadApps():
+def loadApps():# [ Open all apps in the exsisting list ] #
     for app in apps:
         os.startfile(app)  
 
 root.config(bg=bgCol, height=720)
 canvas = tk.Canvas(root, height=710, width=700, bg=bgCol)
 canvas.pack()
+
 frame = ctk.CTkFrame(root, bg_color=bgCol, fg_color=frameCol, corner_radius=50)
 frame.place(relheight=0.8, relwidth=0.8, relx=0.1, rely=0.1)
+
 btnSection = ctk.CTkFrame(root, height=60, width=500, fg_color=bgCol)
 btnSection.pack()
+
 # [Buttons]
 uploadFile = ctk.CTkButton(master=btnSection, text="Upload a File", corner_radius=10, fg_color="#608",
                            hover_color="#20f", width=btnWidth, height=60, command=addApp, text_font=("sans-serif", 12))
